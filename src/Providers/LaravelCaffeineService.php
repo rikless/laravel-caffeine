@@ -25,17 +25,17 @@ class LaravelCaffeineService extends ServiceProvider
         app('Illuminate\Contracts\Http\Kernel')->pushMiddleware('\GeneaLabs\LaravelCaffeine\Http\Middleware\LaravelCaffeineDripMiddleware');
     }
 
-    public function provides() : array
+    public function provides()
     {
         return ['genealabs-laravel-caffeine'];
     }
 
-    private function middlewareGroupExists(string $group) : bool
+    private function middlewareGroupExists($group)
     {
         $routes = collect(app('router')->getRoutes()->getRoutes());
 
-        return $routes->reduce(function ($carry, $route) use ($group) {
-            $carry = ($carry ?? false) ?: false;
+        $response =  $routes->reduce(function ($carry, $route) use ($group) {
+            $carry = (is_null($carry) ? false : $carry) ?: false;
             $actions = (array) $route->getAction();
 
             if (array_key_exists('middleware', $actions)
@@ -45,6 +45,8 @@ class LaravelCaffeineService extends ServiceProvider
             }
 
             return $carry;
-        }) ?? false;
+        });
+
+        return $response === true;
     }
 }
