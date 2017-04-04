@@ -1,5 +1,5 @@
 {
-    "name": "genealabs/laravel-caffeine",
+    "name": "rikless/laravel-caffeine",
     "description": "Keeping Your Laravel Forms Awake",
     "license": "MIT",
     "authors": [
@@ -14,8 +14,8 @@
         }
     },
     "require": {
-        "php": ">=7.0.0",
-        "illuminate/support": "5.1.* || 5.3.*",
-        "illuminate/routing": "5.1.* || 5.3.*"
+        "php": ">=5.6.0",
+        "illuminate/support": "5.1.* || 5.5.*",
+        "illuminate/routing": "5.1.* || 5.5.*"
     }
 }
